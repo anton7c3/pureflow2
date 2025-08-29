@@ -1,6 +1,6 @@
 ## Description
 
-Broken Crystals is a benchmark application that uses modern technologies and implements a set of common security vulnerabilities.
+Pure Flow is a benchmark application that uses modern technologies and implements a set of common security vulnerabilities.
 
 The application contains:
 
@@ -951,7 +951,6 @@ Full configuration & usage examples can be found in our [demo project](https://g
   To demonstrate an XPATH injection attack, you can use the following `curl` command:
 
   ```bash
-  $ curl "https://brokencrystals.com/api/partners/partnerLogin?user=anyuser&password=%27%20or%20%271%27%3D%271"
   ```
 
   Response:
