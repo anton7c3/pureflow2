@@ -18,7 +18,7 @@ import { JwtTokenWithHMACKeysProcessor } from './jwt/jwt.token.with.hmac.keys.pr
 import { JwtTokenWithRSASignatureKeysProcessor } from './jwt/jwt.token.with.rsa.signature.keys.processor';
 
 export enum JwtProcessorType {
-  RSA,
+  RSA = 1,
   SQL_KID,
   WEAK_KEY,
   X5C,
