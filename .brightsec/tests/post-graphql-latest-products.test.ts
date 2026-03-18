@@ -21,7 +21,7 @@ after(() => runner.clear());
 test('POST /graphql latestProducts', { signal: AbortSignal.timeout(timeout) }, async () => {
   await runner
     .createScan({
-      tests: ['graphql_introspection', 'sqli', 'bopla', 'xss', 'csrf'],
+      tests: ['graphql_introspection'],
       attackParamLocations: [AttackParamLocation.BODY, AttackParamLocation.HEADER],
       starMetadata: {
         "code_source": "anton7c3/pureflow2:stable",

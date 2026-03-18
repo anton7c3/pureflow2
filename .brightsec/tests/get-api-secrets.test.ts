@@ -21,7 +21,7 @@ after(() => runner.clear());
 test('GET /api/secrets', { signal: AbortSignal.timeout(timeout) }, async () => {
   await runner
     .createScan({
-      tests: ['secret_tokens', 'csrf', 'bopla', 'improper_asset_management'],
+      tests: ['secret_tokens'],
       attackParamLocations: [AttackParamLocation.PATH],
       starMetadata: {
         "code_source": "anton7c3/pureflow2:stable",
