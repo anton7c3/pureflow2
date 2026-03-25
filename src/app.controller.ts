@@ -94,6 +94,10 @@ export class AppController {
       if (!allowedDomains.includes(urlObj.hostname) || urlObj.searchParams.has('dummy')) {
         throw new HttpException('Invalid redirect URL', HttpStatus.BAD_REQUEST);
       }
+      // Ensure the path is empty to prevent bypass using path traversal
+      if (urlObj.pathname !== '/') {
+        throw new HttpException('Invalid redirect URL', HttpStatus.BAD_REQUEST);
+      }
       return { url: urlObj.toString() };
     } catch (error) {
       throw new HttpException('Invalid URL format', HttpStatus.BAD_REQUEST);
