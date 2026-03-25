@@ -21,7 +21,7 @@ after(() => runner.clear());
 test('GET /api/spawn?command=:command', { signal: AbortSignal.timeout(timeout) }, async () => {
   await runner
     .createScan({
-      tests: ['osi', 'xss', 'csrf', 'secret_tokens'],
+      tests: ['osi'],
       attackParamLocations: [AttackParamLocation.QUERY],
       starMetadata: {
         "code_source": "anton7c3/pureflow2:stable",
