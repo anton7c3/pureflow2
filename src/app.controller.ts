@@ -98,6 +98,10 @@ export class AppController {
       if (urlObj.pathname !== '/') {
         throw new HttpException('Invalid redirect URL', HttpStatus.BAD_REQUEST);
       }
+      // Ensure the protocol is HTTPS
+      if (urlObj.protocol !== 'https:') {
+        throw new HttpException('Invalid redirect URL', HttpStatus.BAD_REQUEST);
+      }
       return { url: urlObj.toString() };
     } catch (error) {
       throw new HttpException('Invalid URL format', HttpStatus.BAD_REQUEST);
