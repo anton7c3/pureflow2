@@ -109,7 +109,7 @@ services:
         max-size: '10m'
 
   ollama:
-    image: 'brightsec/brokencrystals-ollama:smollm135m'
+    image: 'ollama/ollama:latest'
     restart: always
     healthcheck:
       interval: 30s
