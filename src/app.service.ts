@@ -21,10 +21,8 @@ export class AppService {
 
     return new Promise((res, rej) => {
       try {
-        // Split the command into executable and arguments
         const [exec, ...args] = command.split(' ');
 
-        // Validate the command to ensure it's safe to execute
         if (!this.isValidCommand(exec)) {
           throw new Error('Invalid command');
         }
@@ -52,9 +50,7 @@ export class AppService {
     });
   }
 
-  // Function to validate the command
   private isValidCommand(command: string): boolean {
-    // Define a list of allowed commands
     const allowedCommands = ['ls', 'echo'];
     return allowedCommands.includes(command);
   }
