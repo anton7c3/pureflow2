@@ -91,7 +91,7 @@ export class AppController {
     try {
       const urlObj = new URL(url);
       // Check if the hostname is in the allowed list and ensure no query parameters are used for redirection
-      if (!allowedDomains.includes(urlObj.hostname) || urlObj.searchParams.has('dummy')) {
+      if (!allowedDomains.includes(urlObj.hostname) || urlObj.searchParams.toString() !== '') {
         throw new HttpException('Invalid redirect URL', HttpStatus.BAD_REQUEST);
       }
       // Ensure the path is empty to prevent bypass using path traversal
