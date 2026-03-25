@@ -40,11 +40,8 @@ jobs:
           npm i --save=false --prefix .brightsec @sectester/core@0.50.0 @sectester/repeater@0.50.0 @sectester/scan@0.50.0 @sectester/runner@0.50.0 @sectester/reporter@0.50.0
 
       - name: Authenticate with Bright
-        uses: brightsec/action-auth@v1
-        with:
-          hostname: development.playground.brightsec.com
-          project_id: umcKpX5G22ApkeWJFbW3Ub
-          token: ${{ secrets.BRIGHT_TOKEN }}
+        run: |
+          echo "BRIGHT_TOKEN=${{ secrets.BRIGHT_TOKEN }}" >> $GITHUB_ENV
 
       - name: Run security tests
         env:
