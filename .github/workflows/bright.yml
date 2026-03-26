@@ -42,15 +42,15 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t dull/pureflow:${{ env.TAG_PREFIX }} .
-          docker tag dull/pureflow:${{ env.TAG_PREFIX }} brdullc/pureflow:${{ env.TAG_PREFIX }}-${{ env.SHORT_SHA }}
-          docker tag dull/pureflow:${{ env.TAG_PREFIX }} brdullc/pureflow:${{ env.TAG_PREFIX }}-${{ env.SHORT_SHA }}-${{ env.TIMESTAMP }}
+          docker build -t brdullc/pureflow:${{ env.TAG_PREFIX }} .
+          docker tag brdullc/pureflow:${{ env.TAG_PREFIX }} brdullc/pureflow:${{ env.TAG_PREFIX }}-${{ env.SHORT_SHA }}
+          docker tag brdullc/pureflow:${{ env.TAG_PREFIX }} brdullc/pureflow:${{ env.TAG_PREFIX }}-${{ env.SHORT_SHA }}-${{ env.TIMESTAMP }}
 
       - name: Push Docker images
         run: |
-          docker push dull/pureflow:${{ env.TAG_PREFIX }}
-          docker push dull/pureflow:${{ env.TAG_PREFIX }}-${{ env.SHORT_SHA }}
-          docker push dull/pureflow:${{ env.TAG_PREFIX }}-${{ env.SHORT_SHA }}-${{ env.TIMESTAMP }}
+          docker push brdullc/pureflow:${{ env.TAG_PREFIX }}
+          docker push brdullc/pureflow:${{ env.TAG_PREFIX }}-${{ env.SHORT_SHA }}
+          docker push brdullc/pureflow:${{ env.TAG_PREFIX }}-${{ env.SHORT_SHA }}-${{ env.TIMESTAMP }}
 
       - name: Start application
         env:
