@@ -1,0 +1,20 @@
+name: 'Configure Bright credentials'
+description: 'Sets Bright credentials as environment variables for subsequent steps.'
+runs:
+  using: 'composite'
+  steps:
+    - run: |
+        echo "BRIGHT_HOSTNAME=${{ inputs.BRIGHT_HOSTNAME }}" >> $GITHUB_ENV
+        echo "BRIGHT_PROJECT_ID=${{ inputs.BRIGHT_PROJECT_ID }}" >> $GITHUB_ENV
+        echo "BRIGHT_TOKEN=${{ inputs.BRIGHT_TOKEN }}" >> $GITHUB_ENV
+      shell: bash
+inputs:
+  BRIGHT_HOSTNAME:
+    description: 'Bright hostname'
+    required: true
+  BRIGHT_PROJECT_ID:
+    description: 'Bright project ID'
+    required: true
+  BRIGHT_TOKEN:
+    description: 'Bright API token'
+    required: true
