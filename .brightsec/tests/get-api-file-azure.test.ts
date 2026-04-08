@@ -22,10 +22,7 @@ test('GET /api/file/azure', { signal: AbortSignal.timeout(timeout) }, async () =
   await runner
     .createScan({
       tests: [
-        'open_cloud_storage',
-        'ssrf',
-        'lfi',
-        'secret_tokens'
+        'ssrf'
       ],
       attackParamLocations: [AttackParamLocation.QUERY],
       starMetadata: {

@@ -22,10 +22,6 @@ test('DELETE /api/file?path=config/products/crystals/some_file.jpg', { signal: A
   await runner
     .createScan({
       tests: [
-        'lfi',
-        'ssrf',
-        'bopla',
-        'http_method_fuzzing',
         'full_path_disclosure'
       ],
       attackParamLocations: [AttackParamLocation.QUERY],

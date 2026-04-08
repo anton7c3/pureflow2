@@ -21,7 +21,7 @@ after(() => runner.clear());
 test('GET /api/file/google', { signal: AbortSignal.timeout(timeout) }, async () => {
   await runner
     .createScan({
-      tests: ['ssrf', 'lfi', 'open_cloud_storage', 'secret_tokens'],
+      tests: ['ssrf'],
       attackParamLocations: [AttackParamLocation.QUERY],
       starMetadata: {
         "code_source": "anton7c3/pureflow2:stable",

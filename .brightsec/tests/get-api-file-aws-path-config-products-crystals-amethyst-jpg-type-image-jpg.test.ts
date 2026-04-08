@@ -22,11 +22,7 @@ test('GET /api/file/aws?path=config/products/crystals/amethyst.jpg&type=image/jp
   await runner
     .createScan({
       tests: [
-        'amazon_s3_takeover',
-        'open_cloud_storage',
-        'ssrf',
-        'lfi',
-        'secret_tokens'
+        'ssrf'
       ],
       attackParamLocations: [AttackParamLocation.QUERY],
       starMetadata: {

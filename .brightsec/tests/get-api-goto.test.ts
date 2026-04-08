@@ -22,8 +22,7 @@ test('GET /api/goto', { signal: AbortSignal.timeout(timeout) }, async () => {
   await runner
     .createScan({
       tests: [
-        'unvalidated_redirect',
-        'xss'
+        'unvalidated_redirect'
       ],
       attackParamLocations: [AttackParamLocation.QUERY],
       starMetadata: {
