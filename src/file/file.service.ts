@@ -41,8 +41,13 @@ export class FileService {
       throw new Error('cannot delete file from this location');
     } else {
       file = path.resolve(process.cwd(), file);
-      await fs.promises.unlink(file);
-      return true;
+      try {
+        await fs.promises.unlink(file);
+        return true;
+      } catch (err) {
+        this.logger.error(`Failed to delete file: ${err.message}`);
+        throw new Error('Failed to delete file');
+      }
     }
   }
 }
