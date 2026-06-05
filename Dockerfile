@@ -5,6 +5,7 @@
 FROM node:18-alpine AS build
 
 WORKDIR /usr/src/app
+RUN apk add --no-cache python3 make g++
 
 # Copy and build NestJS server project
 COPY --chown=node:node package*.json ./
