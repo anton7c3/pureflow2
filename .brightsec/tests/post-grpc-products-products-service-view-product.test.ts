@@ -1,0 +1,47 @@
+import { test, before, after } from 'node:test';
+import { SecRunner } from '@sectester/runner';
+import { AttackParamLocation, HttpMethod } from '@sectester/scan';
+
+const timeout = 40 * 60 * 1000;
+const baseUrl = process.env.BRIGHT_TARGET_URL!;
+
+let runner!: SecRunner;
+
+before(async () => {
+  runner = new SecRunner({
+    hostname: process.env.BRIGHT_HOSTNAME!,
+    projectId: process.env.BRIGHT_PROJECT_ID!
+  });
+
+  await runner.init();
+});
+
+after(() => runner.clear());
+
+test('POST /grpc/products.ProductsService/ViewProduct', { signal: AbortSignal.timeout(timeout) }, async () => {
+  await runner
+    .createScan({
+      tests: ['sqli', 'id_enumeration', 'csrf', 'full_path_disclosure'],
+      attackParamLocations: [AttackParamLocation.BODY],
+      starMetadata: {
+        code_source: 'anton7c3/pureflow2:stable',
+        databases: ['PostgreSQL'],
+        user_roles: ['admin', 'user', 'guest']
+      },
+      poolSize: +process.env.SECTESTER_SCAN_POOL_SIZE || undefined
+    })
+    .setFailFast(false)
+    .timeout(timeout)
+    .run({
+      method: HttpMethod.POST,
+      url: `${baseUrl}/grpc/products.ProductsService/ViewProduct`,
+      body: 'AAAAAAYKBE9wYWw=',
+      headers: {
+        accept: 'application/grpc-web-text',
+        'content-type': 'application/grpc-web-text+proto',
+        te: 'trailers',
+        'x-grpc-web': '1',
+        'x-user-agent': 'grpc-web-javascript/0.1'
+      }
+    });
+});
